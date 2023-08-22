@@ -1,5 +1,7 @@
 # Latch SDK for Apple Development
 
+Implementation of Latch SDK in Swift
+
 ## 1. Prerequisites
 
 To get the "Application ID" and "Secret", (fundamental values for integrating Latch in any application), it’s necessary to register a developer account in Latch's website: https://latch.telefonica.com. On the upper right side, click on "Developer area".
@@ -39,8 +41,18 @@ return LatchSDK(
 )
 ```
 
-Now you can call any of its API endpints as follows:
+Now you can call any of its API endpoints as follows:
 
 ```swift
-let (data, responseURL) = try await latchSDK.pair(token: token)
+let latchResponse = try await latchSDK.pair(token: token)
+```
+Within `LatchResponse` you will find `rawData` with response in `Data` type  and both `URLResponse` and `URLRequest` of the network operation for you to manipulate. This response struct offers help in decoding its data:
+
+```swift
+import LatchSharedModels
+
+let addOperationResponse = try? latchResponse.decodeAs(AddOperationResponse.self)
+
+print(addOperationResponse.data?.operationId) //  Returned new operation id
+print(addOperationResponse.error?.code) // Returned error code
 ```
