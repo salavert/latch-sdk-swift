@@ -35,7 +35,7 @@ extension APIClient {
                 
                 let headers = try authenticationHeaders(
                     httpMethod: httpMethod,
-                    queryString: url.path(),
+                    queryString: url.relativePath,
                     xHeaders: nil,
                     params: parameters,
                     utc: Date.currentUTC,

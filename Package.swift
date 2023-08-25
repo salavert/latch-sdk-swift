@@ -7,10 +7,10 @@ import PackageDescription
 let package = Package(
     name: "latch-sdk-swift",
     platforms: [
-        .iOS(.v15),
-        .macOS(.v13),
-        .tvOS(.v15),
-        .watchOS(.v8),
+        .iOS(.v13),
+        .macOS(.v11),
+        .tvOS(.v13),
+        .watchOS(.v6),
     ],
     products: [
         .library(name: "LatchSDK", targets: ["LatchSDK"]),

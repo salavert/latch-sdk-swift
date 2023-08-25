@@ -15,6 +15,7 @@ public enum Endpoint: Equatable {
         case modifyOperation(operationId: String, details: OperationDetails)
         case operation(operationId: String)
         case pair(token: String, web3Wallet: String?, web3Signature: String?)
+        case pairWithId(_ id: String)
         case status(accountId: String, operationId: String?, silent: Bool?, noOTP: Bool?)
         case unlock(accountId: String, operationId: String?)
         case unpair(accountId: String)
@@ -49,6 +50,8 @@ extension Endpoint {
                 } else {
                     return .get
                 }
+            case .pairWithId:
+                return .get
             case .lock,
                     .unlock:
                 return .post
@@ -89,6 +92,9 @@ extension Endpoint {
             switch route {
             case let .pair(token, _, _):
                 return "pair/\(token)"
+            
+            case let .pairWithId(id):
+                return "pairWithId/\(id)"
                 
             case let .unpair(accountId):
                 return "unpair/\(accountId)"
@@ -184,7 +190,8 @@ extension Endpoint {
                     .history,
                     .status,
                     .deleteOperation,
-                    .operation:
+                    .operation,
+                    .pairWithId:
                 return nil
             case .instance:
                 fatalError("Parameters not defined")
