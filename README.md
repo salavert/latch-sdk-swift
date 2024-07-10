@@ -4,7 +4,7 @@ Implementation of Latch SDK in Swift
 
 ## 1. Prerequisites
 
-To get the "Application ID" and "Secret", (fundamental values for integrating Latch in any application), it’s necessary to register a developer account in Latch's website: https://latch.telefonica.com. On the upper right side, click on "Developer area".
+To get the "Application ID" and "Secret", (fundamental values for integrating Latch in any application), it’s necessary to register a developer account in Latch's website: https://latch.tu.com. On the upper right side, click on "Developer area".
 
 ## 2. Installation
 
@@ -37,7 +37,7 @@ return LatchSDK(
     appSecret: "your-app-secret",
     apiUserId: "your-user-id",
     apiUserSecret: "your-user-secret",
-    baseUrl: "https://latch.telefonica.com"
+    baseUrl: "https://latch.tu.com"
 )
 ```
 
